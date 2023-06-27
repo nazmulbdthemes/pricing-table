@@ -1,0 +1,25 @@
+{
+	"apiVersion": 2,
+	"name": "bdt/pricing-table",
+	"version": "0.1.0",
+	"title": "Pricing Table",
+	"category": "bdt-pricing-table-blocks",
+	"description": "Pricing table grid block",
+
+	"example": [
+		{
+			"attributes": {
+				"style": "style-1"
+			}
+		}
+	],
+	"supports": {
+		"html": false,
+		"anchor": true,
+		"align": ["full", "wide"]
+	},
+	"textdomain": "bdt-pricing-table",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css"
+}
