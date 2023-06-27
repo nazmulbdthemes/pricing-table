@@ -27,6 +27,22 @@ const attributes = {
 	blockStyle: {
 		type: 'object',
 	},
+	pricingPlan: {
+		type: 'string',
+		default: 'Basic Plan',
+	},
+	price: {
+		type: 'string',
+		default: 20,
+	},
+	userCount: {
+		type: 'string',
+		default: 'per user',
+	},
+	duration: {
+		type: 'string',
+		default: 'per month',
+	},
 	titleColor: {
 		type: 'string',
 	},

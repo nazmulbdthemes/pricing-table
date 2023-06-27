@@ -32,6 +32,10 @@ export default function Edit({ attributes, setAttributes, clientId }) {
 	const {
 		uniqueId,
 		blockStyle,
+		pricingPlan,
+		price,
+		userCount,
+		duration,
 		titleColor,
 		designationColor,
 		iconColor,
@@ -429,15 +433,14 @@ export default function Edit({ attributes, setAttributes, clientId }) {
 					className: uniqueId,
 				})}
 			>
-				<InnerBlocks
-					allowedBlocks={['bdt/team-member-item']}
-					template={[
-						['bdt/team-member-item'],
-						['bdt/team-member-item'],
-						['bdt/team-member-item'],
-					]}
-					renderAppender={() => <InnerBlocks.ButtonBlockAppender />}
-				/>
+				<h2 className="bdt-package-title">{pricingPlan}</h2>
+				<div className="bdt-price-info">
+					<div className="bdt-price">${price}</div>
+					<div className="bdt-user-month">
+						<span className="bdt-user-text">{userCount}</span>
+						<span className="bdt-time-text">{duration}</span>
+					</div>
+				</div>
 			</div>
 		</Fragment>
 	);

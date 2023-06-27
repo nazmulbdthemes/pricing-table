@@ -1,9 +1,9 @@
 export const GRID_COLUMNS = 'gridColumns';
 export const GRID_GAP = 'gridGap';
-export const ROW_GAP = 'rowGap';
-export const NAME_FONT_SIZE = 'nameFontSize';
-export const DESG_FONT_SIZE = 'desgFontSize';
-export const ICON_SIZE = 'iconSize';
+export const PLAN_FONT_SIZE = 'planFontSize';
+export const PRICE_FONT_SIZE = 'PriceFontSize';
+export const USERCOUNT_FONT_SIZE = 'userCountFontSize';
+export const DURATION_FONT_SIZE = 'durationFontSize';
 export const ICON_ROUND_SIZE = 'iconRoundSize';
 export const ICON_GAP = 'iconGap';
 export const ITEM_PADDING = 'itemPadding';
