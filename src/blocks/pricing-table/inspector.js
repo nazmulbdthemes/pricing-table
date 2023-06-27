@@ -7,10 +7,10 @@ import {
 	PanelBody,
 	SelectControl,
 	CardDivider,
-	Button,
 	TextControl,
+	ToggleControl,
 } from '@wordpress/components';
-import { useState, Fragment } from '@wordpress/element';
+import { Fragment } from '@wordpress/element';
 
 /**
  * Internal dependencies
@@ -49,6 +49,11 @@ const Inspector = ({ attributes, setAttributes }) => {
 		featureTitle,
 		featureSubTitle,
 		textValues,
+		buttonText,
+		buttonLink,
+		newTab,
+		badgeText,
+		showBadge,
 	} = attributes;
 	const objAttrs = { attributes, setAttributes, objAttributes };
 
@@ -117,7 +122,7 @@ const Inspector = ({ attributes, setAttributes }) => {
 					/>
 				</PanelBody>
 				<PanelBody
-					title={__('Pricing Plan', 'bdt-pricing-plan')}
+					title={__('Plan Title', 'bdt-pricing-plan')}
 					initialOpen={false}
 				>
 					<TextControl
@@ -255,6 +260,7 @@ const Inspector = ({ attributes, setAttributes }) => {
 									onChange={(newValue) =>
 										onChangeText(newValue, index)
 									}
+									label={`Field ${index + 1}`}
 								/>
 								<button onClick={() => removeTextField(index)}>
 									Remove
@@ -263,6 +269,57 @@ const Inspector = ({ attributes, setAttributes }) => {
 						))}
 						<button onClick={addTextField}>Add</button>
 					</div>
+				</PanelBody>
+				<PanelBody
+					title={__('Badge', 'bdt-pricing-plan')}
+					initialOpen={false}
+				>
+					<ToggleControl
+						label={__('Show Badge', 'bdt-team-member')}
+						checked={showBadge}
+						onChange={() =>
+							setAttributes({
+								showBadge: !showBadge,
+							})
+						}
+					/>
+					{showBadge && (
+						<TextControl
+							label={__('Badge Text', 'bdt-pricing-plan')}
+							onChange={(value) =>
+								setAttributes({ badgeText: value })
+							}
+							value={badgeText}
+						/>
+					)}
+				</PanelBody>
+				<PanelBody
+					title={__('Button', 'bdt-pricing-plan')}
+					initialOpen={false}
+				>
+					<TextControl
+						label={__('Button Text', 'bdt-pricing-plan')}
+						onChange={(value) =>
+							setAttributes({ buttonText: value })
+						}
+						value={buttonText}
+					/>
+					<TextControl
+						label={__('Button Link', 'bdt-pricing-plan')}
+						onChange={(value) =>
+							setAttributes({ buttonLink: value })
+						}
+						value={buttonLink}
+					/>
+					<ToggleControl
+						label={__('Open in a new tab', 'bdt-team-member')}
+						checked={newTab}
+						onChange={() =>
+							setAttributes({
+								newTab: !newTab,
+							})
+						}
+					/>
 				</PanelBody>
 			</Fragment>
 		</InspectorControls>

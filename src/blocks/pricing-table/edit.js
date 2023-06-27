@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 /**
  * WordPress dependencies
  */
@@ -48,6 +49,11 @@ export default function Edit({ attributes, setAttributes, clientId }) {
 		featureTitle,
 		featureSubTitle,
 		textValues,
+		buttonText,
+		buttonLink,
+		newTab,
+		showBadge,
+		badgeText,
 	} = attributes;
 
 	// unique id
@@ -436,30 +442,66 @@ export default function Edit({ attributes, setAttributes, clientId }) {
 					className: uniqueId,
 				})}
 			>
-				<h2 className="bdt-package-title">{pricingPlan}</h2>
-				<div className="bdt-price-info">
-					<div className="bdt-price">${price}</div>
-					<div className="bdt-user-month">
-						<span className="bdt-user-text">{userCount}</span>
-						<span className="bdt-time-text">{duration}</span>
-					</div>
-				</div>
-				<div className="bdt-features-info">
-					<div className="bdt-features-title">{featureTitle}</div>
-					<div className="bdt-features-desc">{featureSubTitle}</div>
-
-					<ul className="features">
-						{textValues.map((value, index) => (
-							<li key={index}>
-								<>
-									<span key={index} className="check-icon">
-										&#10003;
+				<div className="bdt-container">
+					<div className="bdt-item">
+						<div className="bdt-head-content">
+							<h2 className="bdt-package-title">{pricingPlan}</h2>
+							{showBadge && (
+								<div className="bdt-popular-btn">
+									{badgeText}
+								</div>
+							)}
+							<div className="bdt-price-info">
+								<div className="bdt-price">${price}</div>
+								<div className="bdt-user-month">
+									<span className="bdt-user-text">
+										{userCount}
 									</span>
-									<span key={index}>{value}</span>
-								</>
-							</li>
-						))}
-					</ul>
+									<span className="bdt-time-text">
+										{duration}
+									</span>
+								</div>
+							</div>
+							<div className="bdt-link-btn">
+								<a
+									className="bdt-buy-btn"
+									href={buttonLink}
+									target={newTab && '_blank'}
+									rel={
+										newTab
+											? 'noopener noreferrer'
+											: 'noopener'
+									}
+								>
+									{buttonText}
+								</a>
+							</div>
+						</div>
+						<div className="bdt-features-info">
+							<div className="bdt-features-title">
+								{featureTitle}
+							</div>
+							<div className="bdt-features-desc">
+								{featureSubTitle}
+							</div>
+
+							<ul className="features">
+								{textValues.map((value, index) => (
+									<li key={index}>
+										<>
+											<span
+												key={index}
+												className="bdt-check-icon"
+											>
+												&#10003;
+											</span>
+											<span key={index}>{value}</span>
+										</>
+									</li>
+								))}
+							</ul>
+						</div>
+					</div>
 				</div>
 				{/* <div>
 					{textValues.map((value, index) => (

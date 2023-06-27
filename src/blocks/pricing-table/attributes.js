@@ -72,6 +72,26 @@ const attributes = {
 	itemBgColor: {
 		type: 'string',
 	},
+	buttonText: {
+		type: 'string',
+		default: 'Get Started',
+	},
+	buttonLink: {
+		type: 'string',
+		default: '#',
+	},
+	newTab: {
+		type: 'Boolean',
+		default: true,
+	},
+	showBadge: {
+		type: 'Boolean',
+		default: true,
+	},
+	badgeText: {
+		type: 'string',
+		default: 'Popular',
+	},
 	featureTitle: {
 		type: 'string',
 		default: 'Features',
@@ -82,7 +102,7 @@ const attributes = {
 	},
 	textValues: {
 		type: 'array',
-		default: ['Text 1', 'Text 2', 'Text 3'],
+		default: ['One account', 'Unlimited songs', 'Customized playlist'],
 	},
 	...generateResRangleControlAttributes({
 		controlName: GRID_COLUMNS,

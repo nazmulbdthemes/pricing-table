@@ -2,8 +2,97 @@
 * Style Works for both Editor and Frontend
 */
 
-.wp-block-bdt-team-member {
-	display: grid;
-	grid-template-columns: repeat(3, 1fr);
-	gap: 20px;
+.bdt-container {
+	.bdt-item {
+		border-radius: 10px;
+		border: 1px solid #ddd;
+		position: relative;
+		.bdt-head-content {
+			padding: 30px;
+			.bdt-package-title {
+				margin: 0 0 20px;
+				font-size: 23px;
+				font-weight: 700;
+				color: #292734;
+				text-transform: capitalize;
+			}
+			.bdt-price-info {
+				display: flex;
+				align-items: center;
+				gap: 6px;
+				margin-bottom: 10px;
+				.bdt-price {
+					font-size: 40px;
+					font-weight: 700;
+					color: #17171a;
+				}
+				.bdt-user-month {
+					display: flex;
+					flex-direction: column;
+					font-size: 14px;
+					font-weight: 300;
+					color: #34353c;
+				}
+			}
+			.bdt-link-btn a {
+				background: #000;
+				color: #fff;
+				padding: 12px;
+				font-size: 14px;
+				display: block;
+				text-align: center;
+				border-radius: 5px;
+				border: 1px solid #ddd;
+				text-transform: capitalize;
+				text-decoration: none;
+				transition: all 0.3s ease;
+				&:hover {
+					background-color: #0000;
+					color: #000;
+				}
+			}
+		}
+		.bdt-features-info {
+			border-top: 1px solid #ddd;
+			padding: 30px;
+			.bdt-features-title {
+				font-size: 16px;
+				font-weight: 700;
+				text-transform: uppercase;
+			}
+			.bdt-package-desc,
+			.bdt-features-desc {
+				font-size: 14px;
+				font-weight: 300;
+				color: #494754;
+				margin-bottom: 25px;
+			}
+			.features {
+				margin: 0;
+				padding: 0;
+				list-style: none;
+				display: flex;
+				flex-direction: column;
+				gap: 15px;
+				li {
+					display: flex;
+					align-items: center;
+					font-size: 14px;
+					gap: 10px;
+					color: #524f58;
+					.bdt-check-icon {
+						background-color: #7aff00;
+						padding: 4px;
+						border-radius: 100%;
+						width: 22px;
+						height: 22px;
+						display: flex;
+						justify-content: center;
+						align-items: center;
+						font-weight: 700;
+					}
+				}
+			}
+		}
+	}
 }
