@@ -1,7 +1,7 @@
 /**
  * WordPress dependencies
  */
-import { useBlockProps, InnerBlocks } from '@wordpress/block-editor';
+import { useBlockProps } from '@wordpress/block-editor';
 const { Fragment, useEffect } = wp.element;
 
 // editor style
@@ -18,9 +18,9 @@ const {
 	GRID_COLUMNS,
 	GRID_GAP,
 	ROW_GAP,
-	NAME_FONT_SIZE,
-	DESG_FONT_SIZE,
-	ICON_SIZE,
+	PRICE_FONT_SIZE,
+	USERCOUNT_FONT_SIZE,
+	DURATION_FONT_SIZE,
 	ICON_ROUND_SIZE,
 	ICON_GAP,
 	ITEM_PADDING,
@@ -45,6 +45,9 @@ export default function Edit({ attributes, setAttributes, clientId }) {
 		boxBgHoverColor,
 		textAlign,
 		itemBgColor,
+		featureTitle,
+		featureSubTitle,
+		textValues,
 	} = attributes;
 
 	// unique id
@@ -83,20 +86,20 @@ export default function Edit({ attributes, setAttributes, clientId }) {
 	const mobRowGap = attributes[`${ROW_GAP}MobRange`];
 	const gapRowUnit = attributes[`${ROW_GAP}Unit`];
 	// Name Font Size
-	const deskNameFont = attributes[`${NAME_FONT_SIZE}DeskRange`];
-	const tabNameFont = attributes[`${NAME_FONT_SIZE}TabRange`];
-	const mobNameFont = attributes[`${NAME_FONT_SIZE}MobRange`];
-	const nameFontUnit = attributes[`${NAME_FONT_SIZE}Unit`];
+	const deskNameFont = attributes[`${PRICE_FONT_SIZE}DeskRange`];
+	const tabNameFont = attributes[`${PRICE_FONT_SIZE}TabRange`];
+	const mobNameFont = attributes[`${PRICE_FONT_SIZE}MobRange`];
+	const nameFontUnit = attributes[`${PRICE_FONT_SIZE}Unit`];
 	// DESG Font Size
-	const deskDesgFont = attributes[`${DESG_FONT_SIZE}DeskRange`];
-	const tabDesgFont = attributes[`${DESG_FONT_SIZE}TabRange`];
-	const mobDesgFont = attributes[`${DESG_FONT_SIZE}MobRange`];
-	const desgFontUnit = attributes[`${DESG_FONT_SIZE}Unit`];
+	const deskDesgFont = attributes[`${USERCOUNT_FONT_SIZE}DeskRange`];
+	const tabDesgFont = attributes[`${USERCOUNT_FONT_SIZE}TabRange`];
+	const mobDesgFont = attributes[`${USERCOUNT_FONT_SIZE}MobRange`];
+	const desgFontUnit = attributes[`${USERCOUNT_FONT_SIZE}Unit`];
 	// Icon Size
-	const deskIconSize = attributes[`${ICON_SIZE}DeskRange`];
-	const tabIconSize = attributes[`${ICON_SIZE}TabRange`];
-	const mobIconSize = attributes[`${ICON_SIZE}MobRange`];
-	const iconSizeUnit = attributes[`${ICON_SIZE}Unit`];
+	const deskIconSize = attributes[`${DURATION_FONT_SIZE}DeskRange`];
+	const tabIconSize = attributes[`${DURATION_FONT_SIZE}TabRange`];
+	const mobIconSize = attributes[`${DURATION_FONT_SIZE}MobRange`];
+	const iconSizeUnit = attributes[`${DURATION_FONT_SIZE}Unit`];
 	// Icon Round Size
 	const deskIconRoundSize = attributes[`${ICON_ROUND_SIZE}DeskRange`];
 	const tabIconRoundSize = attributes[`${ICON_ROUND_SIZE}TabRange`];
@@ -441,6 +444,33 @@ export default function Edit({ attributes, setAttributes, clientId }) {
 						<span className="bdt-time-text">{duration}</span>
 					</div>
 				</div>
+				<div className="bdt-features-info">
+					<div className="bdt-features-title">{featureTitle}</div>
+					<div className="bdt-features-desc">{featureSubTitle}</div>
+
+					<ul className="features">
+						{textValues.map((value, index) => (
+							<li key={index}>
+								<>
+									<span key={index} className="check-icon">
+										&#10003;
+									</span>
+									<span key={index}>{value}</span>
+								</>
+							</li>
+						))}
+					</ul>
+				</div>
+				{/* <div>
+					{textValues.map((value, index) => (
+						<>
+							<div key={index} className="check-icon">
+								&#10003;
+							</div>
+							<span key={index}>{value}</span>
+						</>
+					))}
+				</div> */}
 			</div>
 		</Fragment>
 	);

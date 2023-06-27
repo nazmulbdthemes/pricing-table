@@ -7,10 +7,10 @@ import {
 	PanelBody,
 	SelectControl,
 	CardDivider,
-	GradientPicker,
+	Button,
 	TextControl,
 } from '@wordpress/components';
-const { Fragment } = wp.element;
+import { useState, Fragment } from '@wordpress/element';
 
 /**
  * Internal dependencies
@@ -26,11 +26,6 @@ const {
 	PRICE_FONT_SIZE,
 	USERCOUNT_FONT_SIZE,
 	DURATION_FONT_SIZE,
-	ICON_SIZE,
-	ICON_ROUND_SIZE,
-	ICON_GAP,
-	ITEM_PADDING,
-	ITEM_BORDER_RADIUS,
 } = Constants;
 
 import objAttributes from './attributes';
@@ -44,16 +39,60 @@ const Inspector = ({ attributes, setAttributes }) => {
 		userCount,
 		duration,
 		titleColor,
-		designationColor,
-		contentBgColor,
-		iconColor,
+		priceColor,
+		userCountColor,
+		durationColor,
 		iconBgNormalColor,
 		iconBgGradientColor,
 		textAlign,
 		itemBgColor,
+		featureTitle,
+		featureSubTitle,
+		textValues,
 	} = attributes;
 	const objAttrs = { attributes, setAttributes, objAttributes };
 
+	// const [texts, setTexts] = useState([
+	// 	'Default Text',
+	// 	'Default Text',
+	// 	'Default Text',
+	// ]); // State to store the array of texts
+
+	// const updateText = (index, value) => {
+	// 	const newtexts = [...texts];
+	// 	newtexts[index] = value;
+	// 	setTexts(newtexts);
+	// };
+
+	// const addText = () => {
+	// 	const newtexts = [...texts, 'Default Text'];
+	// 	setTexts(newtexts);
+	// };
+
+	// const removeText = (index) => {
+	// 	const newtexts = [...texts];
+	// 	newtexts.splice(index, 1);
+	// 	setTexts(newtexts);
+	// };
+
+	const onChangeText = (newValue, index) => {
+		const updatedValues = [...textValues];
+		updatedValues[index] = newValue;
+		setAttributes({ textValues: updatedValues });
+	};
+
+	// Function to add a new text field
+	const addTextField = () => {
+		const updatedValues = [...textValues, ''];
+		setAttributes({ textValues: updatedValues });
+	};
+
+	// Function to remove a text field
+	const removeTextField = (index) => {
+		const updatedValues = [...textValues];
+		updatedValues.splice(index, 1);
+		setAttributes({ textValues: updatedValues });
+	};
 	return (
 		<InspectorControls>
 			<Fragment>
@@ -97,6 +136,12 @@ const Inspector = ({ attributes, setAttributes }) => {
 						min={0}
 						max={100}
 					/>
+					<ColorControl
+						label={__('Color', 'bdt-pricing-plan')}
+						color={titleColor}
+						colorName="titleColor"
+						onChange={setAttributes}
+					/>
 				</PanelBody>
 				<PanelBody
 					title={__('Price', 'bdt-pricing-plan')}
@@ -115,6 +160,12 @@ const Inspector = ({ attributes, setAttributes }) => {
 						min={0}
 						max={100}
 					/>
+					<ColorControl
+						label={__('Color', 'bdt-pricing-plan')}
+						color={priceColor}
+						colorName="priceColor"
+						onChange={setAttributes}
+					/>
 					<CardDivider />
 					<TextControl
 						label={__('User Count', 'bdt-pricing-plan')}
@@ -131,6 +182,12 @@ const Inspector = ({ attributes, setAttributes }) => {
 						min={0}
 						max={100}
 					/>
+					<ColorControl
+						label={__('Color', 'bdt-pricing-plan')}
+						color={userCountColor}
+						colorName="userCountColor"
+						onChange={setAttributes}
+					/>
 					<CardDivider />
 					<TextControl
 						label={__('Duration', 'bdt-pricing-plan')}
@@ -145,199 +202,67 @@ const Inspector = ({ attributes, setAttributes }) => {
 						min={0}
 						max={100}
 					/>
-					<CardDivider />
-					<ResRangleControl
-						label={__('Font Size', 'bdt-pricing-plan')}
-						controlName={PLAN_FONT_SIZE}
-						objAttrs={objAttrs}
-						noUnits={false}
-						min={0}
-						max={100}
+					<ColorControl
+						label={__('Color', 'bdt-pricing-plan')}
+						color={durationColor}
+						colorName="durationColor"
+						onChange={setAttributes}
 					/>
+					<CardDivider />
 				</PanelBody>
 				<PanelBody
-					title={__('Item Box', 'bdt-pricing-plan')}
+					title={__('Features', 'bdt-pricing-plan')}
 					initialOpen={false}
 				>
-					<ResRangleControl
-						label={__('Padding', 'bdt-pricing-plan')}
-						controlName={ITEM_PADDING}
-						objAttrs={objAttrs}
-						noUnits={false}
-						min={1}
-						max={100}
-					/>
-					<CardDivider />
-					<ResRangleControl
-						label={__('Border Radius', 'bdt-pricing-plan')}
-						controlName={ITEM_BORDER_RADIUS}
-						objAttrs={objAttrs}
-						noUnits={false}
-						min={1}
-						max={100}
-					/>
-					<ColorControl
-						label={__('Background Color', 'bdt-pricing-plan')}
-						color={itemBgColor}
-						colorName="itemBgColor"
-						onChange={setAttributes}
-					/>
-				</PanelBody>
-				<PanelBody
-					title={__('Content', 'bdt-pricing-plan')}
-					initialOpen={false}
-				>
-					<ResRangleControl
-						label={__('Name Font Size', 'bdt-pricing-plan')}
-						controlName={NAME_FONT_SIZE}
-						objAttrs={objAttrs}
-						noUnits={false}
-						min={1}
-						max={100}
-					/>
-					<CardDivider />
-					<ResRangleControl
-						label={__('Designation Font Size', 'bdt-pricing-plan')}
-						controlName={DESG_FONT_SIZE}
-						objAttrs={objAttrs}
-						noUnits={false}
-						min={1}
-						max={100}
-					/>
-					<CardDivider />
-					<Alignment
-						label={__('Alignment', 'bdt-pricing-plan')}
-						attribute={textAlign}
-						attributeName="textAlign"
-						setAttributes={setAttributes}
-						options={aligns}
-					/>
-					<CardDivider />
-					<ColorControl
-						label={__('Title Color', 'bdt-pricing-plan')}
-						color={titleColor}
-						colorName="titleColor"
-						onChange={setAttributes}
-					/>
-					<ColorControl
-						label={__('Designation Color', 'bdt-pricing-plan')}
-						color={designationColor}
-						colorName="designationColor"
-						onChange={setAttributes}
-					/>
-					<ColorControl
-						label={__(
-							'Content Background Color',
-							'bdt-pricing-plan'
-						)}
-						color={contentBgColor}
-						colorName="contentBgColor"
-						onChange={setAttributes}
-					/>
-				</PanelBody>
-				<PanelBody
-					title={__('Social Profiles', 'bdt-pricing-plan')}
-					initialOpen={false}
-				>
-					<ColorControl
-						label={__('Icon Color', 'bdt-pricing-plan')}
-						color={iconColor}
-						colorName="iconColor"
-						onChange={setAttributes}
-					/>
-					<p className="bdt-icon-color-title">
-						{__('Icon Background Color', 'bdt-pricing-plan')}
-					</p>
-					<TabPanelControl
-						normalComponents={
-							<Fragment>
-								<ColorControl
-									label={__(
-										'Normal Background',
-										'bdt-pricing-plan'
-									)}
-									color={iconBgNormalColor}
-									colorName="iconBgNormalColor"
-									onChange={setAttributes}
-								/>
-							</Fragment>
-						}
-						hoverComponents={
-							<Fragment>
-								<GradientPicker
-									value={iconBgGradientColor}
+					{/* <PanelBody title="Texts" initialOpen={true}>
+						{texts.map((text, index) => (
+							<div key={index}>
+								<TextControl
+									value={text}
 									onChange={(value) =>
-										setAttributes({
-											iconBgGradientColor: value,
-										})
+										updateText(index, value)
 									}
-									gradients={[
-										{
-											name: 'Vivid cyan blue to vivid purple',
-											gradient:
-												'linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%)',
-											slug: 'vivid-cyan-blue-to-vivid-purple',
-										},
-										{
-											name: 'Light green cyan to vivid green cyan',
-											gradient:
-												'linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%)',
-											slug: 'light-green-cyan-to-vivid-green-cyan',
-										},
-										{
-											name: 'Luminous vivid amber to luminous vivid orange',
-											gradient:
-												'linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%)',
-											slug: 'luminous-vivid-amber-to-luminous-vivid-orange',
-										},
-										{
-											name: 'Luminous vivid orange to vivid red',
-											gradient:
-												'linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%)',
-											slug: 'luminous-vivid-orange-to-vivid-red',
-										},
-										{
-											name: 'Very light gray to cyan bluish gray',
-											gradient:
-												'linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%)',
-											slug: 'very-light-gray-to-cyan-bluish-gray',
-										},
-										{
-											name: 'Cool to warm spectrum',
-											gradient:
-												'linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%)',
-											slug: 'cool-to-warm-spectrum',
-										},
-									]}
+									label={`Text ${index + 1}`}
 								/>
-							</Fragment>
+								<Button onClick={() => removeText(index)}>
+									Remove
+								</Button>
+							</div>
+						))}
+						<Button isPrimary onClick={addText}>
+							Add Text
+						</Button>
+					</PanelBody> */}
+					<TextControl
+						label={__('Feature Title', 'bdt-pricing-plan')}
+						onChange={(value) =>
+							setAttributes({ featureTitle: value })
 						}
+						value={featureTitle}
 					/>
-					<CardDivider />
-					<ResRangleControl
-						label={__('Icon Size', 'bdt-pricing-plan')}
-						controlName={ICON_SIZE}
-						objAttrs={objAttrs}
-						noUnits={false}
-						min={0}
-						max={100}
+					<TextControl
+						label={__('Feature Sub Title', 'bdt-pricing-plan')}
+						onChange={(value) =>
+							setAttributes({ featureSubTitle: value })
+						}
+						value={featureSubTitle}
 					/>
-					<ResRangleControl
-						label={__('Icon Round Size', 'bdt-pricing-plan')}
-						controlName={ICON_ROUND_SIZE}
-						objAttrs={objAttrs}
-						noUnits={false}
-						min={0}
-						max={100}
-					/>
-					<ResRangleControl
-						label={__('Icon Gap', 'bdt-pricing-plan')}
-						controlName={ICON_GAP}
-						objAttrs={objAttrs}
-						noUnits={false}
-						min={0}
-						max={100}
-					/>
+					<div>
+						{textValues.map((value, index) => (
+							<div key={index}>
+								<TextControl
+									value={value}
+									onChange={(newValue) =>
+										onChangeText(newValue, index)
+									}
+								/>
+								<button onClick={() => removeTextField(index)}>
+									Remove
+								</button>
+							</div>
+						))}
+						<button onClick={addTextField}>Add</button>
+					</div>
 				</PanelBody>
 			</Fragment>
 		</InspectorControls>

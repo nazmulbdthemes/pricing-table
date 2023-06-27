@@ -43,16 +43,20 @@ const attributes = {
 		type: 'string',
 		default: 'per month',
 	},
+	badge: {
+		type: 'string',
+		default: 'popular',
+	},
 	titleColor: {
 		type: 'string',
 	},
-	designationColor: {
+	priceColor: {
 		type: 'string',
 	},
-	iconColor: {
+	userCountColor: {
 		type: 'string',
 	},
-	iconBgNormalColor: {
+	durationColor: {
 		type: 'string',
 	},
 	iconBgGradientColor: {
@@ -67,6 +71,18 @@ const attributes = {
 	},
 	itemBgColor: {
 		type: 'string',
+	},
+	featureTitle: {
+		type: 'string',
+		default: 'Features',
+	},
+	featureSubTitle: {
+		type: 'string',
+		default: '',
+	},
+	textValues: {
+		type: 'array',
+		default: ['Text 1', 'Text 2', 'Text 3'],
 	},
 	...generateResRangleControlAttributes({
 		controlName: GRID_COLUMNS,
