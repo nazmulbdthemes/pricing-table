@@ -26,6 +26,16 @@ const {
 	PRICE_FONT_SIZE,
 	USERCOUNT_FONT_SIZE,
 	DURATION_FONT_SIZE,
+	BADGE_FONT_SIZE,
+	BADGE_BORDER_RADIUS,
+	BADGE_PADDING,
+	FEATURE_TITLE_FONT_SIZE,
+	FEATURE_SUB_TITLE_FONT_SIZE,
+	FEATURE_ICON_SIZE,
+	FEATURE_ICON_ROUND_SIZE,
+	FEATURE_ITEM_TEXT_FONT_SIZE,
+	FEATURE_ITEM_TEXT_GAP,
+	FEATURE_ITEM_BOTTOM_GAP,
 } = Constants;
 
 import objAttributes from './attributes';
@@ -42,8 +52,6 @@ const Inspector = ({ attributes, setAttributes }) => {
 		priceColor,
 		userCountColor,
 		durationColor,
-		iconBgNormalColor,
-		iconBgGradientColor,
 		textAlign,
 		itemBgColor,
 		featureTitle,
@@ -54,31 +62,15 @@ const Inspector = ({ attributes, setAttributes }) => {
 		newTab,
 		badgeText,
 		showBadge,
+		badgeBgColor,
+		badgeColor,
+		featureTitleColor,
+		featureSubtitleColor,
+		featureIconColor,
+		featureIconBgColor,
+		featureItemTextColor,
 	} = attributes;
 	const objAttrs = { attributes, setAttributes, objAttributes };
-
-	// const [texts, setTexts] = useState([
-	// 	'Default Text',
-	// 	'Default Text',
-	// 	'Default Text',
-	// ]); // State to store the array of texts
-
-	// const updateText = (index, value) => {
-	// 	const newtexts = [...texts];
-	// 	newtexts[index] = value;
-	// 	setTexts(newtexts);
-	// };
-
-	// const addText = () => {
-	// 	const newtexts = [...texts, 'Default Text'];
-	// 	setTexts(newtexts);
-	// };
-
-	// const removeText = (index) => {
-	// 	const newtexts = [...texts];
-	// 	newtexts.splice(index, 1);
-	// 	setTexts(newtexts);
-	// };
 
 	const onChangeText = (newValue, index) => {
 		const updatedValues = [...textValues];
@@ -219,56 +211,198 @@ const Inspector = ({ attributes, setAttributes }) => {
 					title={__('Features', 'bdt-pricing-plan')}
 					initialOpen={false}
 				>
-					{/* <PanelBody title="Texts" initialOpen={true}>
-						{texts.map((text, index) => (
-							<div key={index}>
+					<TabPanelControl
+						normalComponents={
+							<Fragment>
 								<TextControl
-									value={text}
+									label={__(
+										'Feature Title',
+										'bdt-pricing-plan'
+									)}
 									onChange={(value) =>
-										updateText(index, value)
+										setAttributes({ featureTitle: value })
 									}
-									label={`Text ${index + 1}`}
+									value={featureTitle}
 								/>
-								<Button onClick={() => removeText(index)}>
-									Remove
-								</Button>
-							</div>
-						))}
-						<Button isPrimary onClick={addText}>
-							Add Text
-						</Button>
-					</PanelBody> */}
-					<TextControl
-						label={__('Feature Title', 'bdt-pricing-plan')}
-						onChange={(value) =>
-							setAttributes({ featureTitle: value })
-						}
-						value={featureTitle}
-					/>
-					<TextControl
-						label={__('Feature Sub Title', 'bdt-pricing-plan')}
-						onChange={(value) =>
-							setAttributes({ featureSubTitle: value })
-						}
-						value={featureSubTitle}
-					/>
-					<div>
-						{textValues.map((value, index) => (
-							<div key={index}>
 								<TextControl
-									value={value}
-									onChange={(newValue) =>
-										onChangeText(newValue, index)
+									label={__(
+										'Feature Sub Title',
+										'bdt-pricing-plan'
+									)}
+									onChange={(value) =>
+										setAttributes({
+											featureSubTitle: value,
+										})
 									}
-									label={`Field ${index + 1}`}
+									value={featureSubTitle}
 								/>
-								<button onClick={() => removeTextField(index)}>
-									Remove
-								</button>
-							</div>
-						))}
-						<button onClick={addTextField}>Add</button>
-					</div>
+								<CardDivider />
+								<p className="bdt-features-title">
+									{__('Feature Items', 'bdt-pricing-plan')}
+								</p>
+								<div>
+									{textValues.map((value, index) => (
+										<div
+											key={index}
+											className="bdt-feature-wrap"
+										>
+											<TextControl
+												value={value}
+												onChange={(newValue) =>
+													onChangeText(
+														newValue,
+														index
+													)
+												}
+												label={`Field ${index + 1}`}
+											/>
+											<button
+												onClick={() =>
+													removeTextField(index)
+												}
+												className="bdt-feature-remove"
+											>
+												{__(
+													'Remove',
+													'bdt-pricing-plan'
+												)}
+											</button>
+										</div>
+									))}
+									<button
+										onClick={addTextField}
+										className="bdt-feature-add"
+									>
+										{__('Add Feature', 'bdt-pricing-plan')}
+									</button>
+								</div>
+							</Fragment>
+						}
+						hoverComponents={
+							<Fragment>
+								<p className="bdt-features-title">
+									{__('Feature Title', 'bdt-pricing-plan')}
+								</p>
+								<ResRangleControl
+									label={__('Font Size', 'bdt-pricing-plan')}
+									controlName={FEATURE_TITLE_FONT_SIZE}
+									objAttrs={objAttrs}
+									noUnits={false}
+									min={0}
+									max={100}
+								/>
+								<ColorControl
+									label={__('Color', 'bdt-pricing-plan')}
+									color={featureTitleColor}
+									colorName="featureTitleColor"
+									onChange={setAttributes}
+								/>
+								<CardDivider />
+								<p className="bdt-features-title">
+									{__(
+										'Feature Sub Title',
+										'bdt-pricing-plan'
+									)}
+								</p>
+								<ResRangleControl
+									label={__('Font Size', 'bdt-pricing-plan')}
+									controlName={FEATURE_SUB_TITLE_FONT_SIZE}
+									objAttrs={objAttrs}
+									noUnits={false}
+									min={0}
+									max={100}
+								/>
+								<ColorControl
+									label={__('Color', 'bdt-pricing-plan')}
+									color={featureSubtitleColor}
+									colorName="featureSubtitleColor"
+									onChange={setAttributes}
+								/>
+								<CardDivider />
+								<p className="bdt-features-title">
+									{__('Feature Icon', 'bdt-pricing-plan')}
+								</p>
+								<ResRangleControl
+									label={__('Icon Size', 'bdt-pricing-plan')}
+									controlName={FEATURE_ICON_SIZE}
+									objAttrs={objAttrs}
+									noUnits={false}
+									min={0}
+									max={100}
+								/>
+								<ResRangleControl
+									label={__(
+										'Icon Round Size',
+										'bdt-pricing-plan'
+									)}
+									controlName={FEATURE_ICON_ROUND_SIZE}
+									objAttrs={objAttrs}
+									noUnits={false}
+									min={0}
+									max={100}
+								/>
+								<ColorControl
+									label={__('Color', 'bdt-pricing-plan')}
+									color={featureIconColor}
+									colorName="featureIconColor"
+									onChange={setAttributes}
+								/>
+								<ColorControl
+									label={__(
+										'Background Color',
+										'bdt-pricing-plan'
+									)}
+									color={featureIconBgColor}
+									colorName="featureIconBgColor"
+									onChange={setAttributes}
+								/>
+								<CardDivider />
+								<p className="bdt-features-title">
+									{__(
+										'Feature Item Text',
+										'bdt-pricing-plan'
+									)}
+								</p>
+								<ResRangleControl
+									label={__('Font Size', 'bdt-pricing-plan')}
+									controlName={FEATURE_ITEM_TEXT_FONT_SIZE}
+									objAttrs={objAttrs}
+									noUnits={false}
+									min={0}
+									max={100}
+								/>
+								<ColorControl
+									label={__('Color', 'bdt-pricing-plan')}
+									color={featureItemTextColor}
+									colorName="featureItemTextColor"
+									onChange={setAttributes}
+								/>
+								<CardDivider />
+								<ResRangleControl
+									label={__(
+										'Gap Between Icon & Text',
+										'bdt-pricing-plan'
+									)}
+									controlName={FEATURE_ITEM_TEXT_GAP}
+									objAttrs={objAttrs}
+									noUnits={false}
+									min={0}
+									max={100}
+								/>
+								<ResRangleControl
+									label={__(
+										'Item Bottom Gap',
+										'bdt-pricing-plan'
+									)}
+									controlName={FEATURE_ITEM_BOTTOM_GAP}
+									objAttrs={objAttrs}
+									noUnits={false}
+									min={0}
+									max={100}
+								/>
+							</Fragment>
+						}
+					/>
 				</PanelBody>
 				<PanelBody
 					title={__('Badge', 'bdt-pricing-plan')}
@@ -284,13 +418,54 @@ const Inspector = ({ attributes, setAttributes }) => {
 						}
 					/>
 					{showBadge && (
-						<TextControl
-							label={__('Badge Text', 'bdt-pricing-plan')}
-							onChange={(value) =>
-								setAttributes({ badgeText: value })
-							}
-							value={badgeText}
-						/>
+						<Fragment>
+							<TextControl
+								label={__('Badge Text', 'bdt-pricing-plan')}
+								onChange={(value) =>
+									setAttributes({ badgeText: value })
+								}
+								value={badgeText}
+							/>
+							<ResRangleControl
+								label={__('Font Size', 'bdt-pricing-plan')}
+								controlName={BADGE_FONT_SIZE}
+								objAttrs={objAttrs}
+								noUnits={false}
+								min={0}
+								max={100}
+							/>
+							<ColorControl
+								label={__('Color', 'bdt-pricing-plan')}
+								color={badgeColor}
+								colorName="badgeColor"
+								onChange={setAttributes}
+							/>
+							<ColorControl
+								label={__(
+									'Background Color',
+									'bdt-pricing-plan'
+								)}
+								color={badgeBgColor}
+								colorName="badgeBgColor"
+								onChange={setAttributes}
+							/>
+							<ResRangleControl
+								label={__('Border Radius', 'bdt-pricing-plan')}
+								controlName={BADGE_BORDER_RADIUS}
+								objAttrs={objAttrs}
+								noUnits={false}
+								min={0}
+								max={100}
+							/>
+							<ResRangleControl
+								label={__('Padding', 'bdt-pricing-plan')}
+								controlName={BADGE_PADDING}
+								objAttrs={objAttrs}
+								noUnits={false}
+								min={0}
+								max={100}
+							/>
+						</Fragment>
 					)}
 				</PanelBody>
 				<PanelBody

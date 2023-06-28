@@ -26,6 +26,16 @@ const {
 	ICON_GAP,
 	ITEM_PADDING,
 	ITEM_BORDER_RADIUS,
+	BADGE_FONT_SIZE,
+	BADGE_BORDER_RADIUS,
+	BADGE_PADDING,
+	FEATURE_TITLE_FONT_SIZE,
+	FEATURE_SUB_TITLE_FONT_SIZE,
+	FEATURE_ICON_SIZE,
+	FEATURE_ICON_ROUND_SIZE,
+	FEATURE_ITEM_TEXT_GAP,
+	FEATURE_ITEM_BOTTOM_GAP,
+	FEATURE_ITEM_TEXT_FONT_SIZE,
 } = Constants;
 
 // Edit Function
@@ -54,6 +64,13 @@ export default function Edit({ attributes, setAttributes, clientId }) {
 		newTab,
 		showBadge,
 		badgeText,
+		badgeBgColor,
+		badgeColor,
+		featureTitleColor,
+		featureSubtitleColor,
+		featureIconColor,
+		featureIconBgColor,
+		featureItemTextColor,
 	} = attributes;
 
 	// unique id
@@ -503,16 +520,6 @@ export default function Edit({ attributes, setAttributes, clientId }) {
 						</div>
 					</div>
 				</div>
-				{/* <div>
-					{textValues.map((value, index) => (
-						<>
-							<div key={index} className="check-icon">
-								&#10003;
-							</div>
-							<span key={index}>{value}</span>
-						</>
-					))}
-				</div> */}
 			</div>
 		</Fragment>
 	);

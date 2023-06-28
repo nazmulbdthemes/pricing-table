@@ -14,24 +14,24 @@ const TabPanelControl = ({ normalComponents, hoverComponents }) => {
 		<TabPanel
 			className="bdt-tab-panel"
 			activeClass="active-tab"
-			initialTabName="bdt_review_normal"
+			initialTabName="bdt_pricing_content"
 			tabs={[
 				{
-					name: 'bdt_review_normal',
-					title: __('Normal', 'bdt-review-blocks'),
+					name: 'bdt_pricing_content',
+					title: __('Content', 'bdt-pricing-table'),
 					className: 'bdt-tab bdt-general',
 				},
 				{
-					name: 'bdt_review_hover',
-					title: __('Gradient', 'bdt-review-blocks'),
+					name: 'bdt_pricing_style',
+					title: __('Style', 'bdt-pricing-table'),
 					className: 'bdt-tab bdt-style',
 				},
 			]}
 		>
 			{(tabContent) => {
-				if (tabContent.name === 'bdt_review_normal') {
+				if (tabContent.name === 'bdt_pricing_content') {
 					return <Fragment>{normalComponents}</Fragment>;
-				} else if (tabContent.name === 'bdt_review_hover') {
+				} else if (tabContent.name === 'bdt_pricing_style') {
 					return <Fragment>{hoverComponents}</Fragment>;
 				}
 			}}

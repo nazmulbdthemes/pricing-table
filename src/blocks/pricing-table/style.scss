@@ -16,6 +16,18 @@
 				color: #292734;
 				text-transform: capitalize;
 			}
+			.bdt-popular-btn {
+				position: absolute;
+				top: 0;
+				right: 0;
+				margin: 30px;
+				color: #000;
+				font-size: 11px;
+				text-transform: capitalize;
+				background-color: #72fd3f;
+				padding: 4px 10px;
+				border-radius: 30px;
+			}
 			.bdt-price-info {
 				display: flex;
 				align-items: center;
@@ -84,8 +96,8 @@
 						background-color: #7aff00;
 						padding: 4px;
 						border-radius: 100%;
-						width: 22px;
-						height: 22px;
+						width: 18px;
+						height: 18px;
 						display: flex;
 						justify-content: center;
 						align-items: center;
