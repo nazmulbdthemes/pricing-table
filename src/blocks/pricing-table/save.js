@@ -1,12 +1,13 @@
 /**
  * WordPress dependencies
  */
-import { useBlockProps } from '@wordpress/block-editor';
+import { useBlockProps, RichText } from '@wordpress/block-editor';
 
 export default function save({ attributes }) {
 	const {
 		uniqueId,
 		pricingPlan,
+		titleTag,
 		showBadge,
 		badgeText,
 		price,
@@ -28,7 +29,11 @@ export default function save({ attributes }) {
 			<div className="bdt-container">
 				<div className="bdt-item">
 					<div className="bdt-head-content">
-						<h2 className="bdt-package-title">{pricingPlan}</h2>
+						<RichText.Content
+							tagName={titleTag}
+							className="bdt-package-title"
+							value={pricingPlan}
+						/>
 						{showBadge && (
 							<div className="bdt-popular-btn">{badgeText}</div>
 						)}

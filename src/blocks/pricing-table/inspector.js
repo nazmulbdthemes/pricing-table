@@ -28,7 +28,8 @@ const {
 	DURATION_FONT_SIZE,
 	BADGE_FONT_SIZE,
 	BADGE_BORDER_RADIUS,
-	BADGE_PADDING,
+	BADGE_HORIZONTAL_PADDING,
+	BADGE_VERTICAL_PADDING,
 	FEATURE_TITLE_FONT_SIZE,
 	FEATURE_SUB_TITLE_FONT_SIZE,
 	FEATURE_ICON_SIZE,
@@ -36,6 +37,11 @@ const {
 	FEATURE_ITEM_TEXT_FONT_SIZE,
 	FEATURE_ITEM_TEXT_GAP,
 	FEATURE_ITEM_BOTTOM_GAP,
+	BUTTON_FONT_SIZE,
+	BUTTON_PADDING,
+	BUTTON_BORDER_RADIUS,
+	ITEM_BORDER_RADIUS,
+	ITEM_PADDING,
 } = Constants;
 
 import objAttributes from './attributes';
@@ -48,12 +54,11 @@ const Inspector = ({ attributes, setAttributes }) => {
 		price,
 		userCount,
 		duration,
+		titleTag,
 		titleColor,
 		priceColor,
 		userCountColor,
 		durationColor,
-		textAlign,
-		itemBgColor,
 		featureTitle,
 		featureSubTitle,
 		textValues,
@@ -69,6 +74,11 @@ const Inspector = ({ attributes, setAttributes }) => {
 		featureIconColor,
 		featureIconBgColor,
 		featureItemTextColor,
+		buttonColor,
+		buttonBgColor,
+		buttonHoverColor,
+		buttonHoverBgColor,
+		itemBgColor,
 	} = attributes;
 	const objAttrs = { attributes, setAttributes, objAttributes };
 
@@ -114,6 +124,33 @@ const Inspector = ({ attributes, setAttributes }) => {
 					/>
 				</PanelBody>
 				<PanelBody
+					title={__('Item Box', 'bdt-pricing-plan')}
+					initialOpen={false}
+				>
+					<ColorControl
+						label={__('Background Color', 'bdt-pricing-plan')}
+						color={itemBgColor}
+						colorName="itemBgColor"
+						onChange={setAttributes}
+					/>
+					<ResRangleControl
+						label={__('Border Radius', 'bdt-pricing-plan')}
+						controlName={ITEM_BORDER_RADIUS}
+						objAttrs={objAttrs}
+						noUnits={false}
+						min={0}
+						max={100}
+					/>
+					<ResRangleControl
+						label={__('Padding', 'bdt-pricing-plan')}
+						controlName={ITEM_PADDING}
+						objAttrs={objAttrs}
+						noUnits={false}
+						min={0}
+						max={100}
+					/>
+				</PanelBody>
+				<PanelBody
 					title={__('Plan Title', 'bdt-pricing-plan')}
 					initialOpen={false}
 				>
@@ -123,6 +160,23 @@ const Inspector = ({ attributes, setAttributes }) => {
 							setAttributes({ pricingPlan: value })
 						}
 						value={pricingPlan}
+					/>
+					<SelectControl
+						label={__('Select Tag', 'bdt-team-member')}
+						options={[
+							{ label: 'H1', value: 'h1' },
+							{ label: 'H2', value: 'h2' },
+							{ label: 'H3', value: 'h3' },
+							{ label: 'H4', value: 'h4' },
+							{ label: 'H5', value: 'h5' },
+							{ label: 'H6', value: 'h6' },
+							{ label: 'P', value: 'p' },
+							{ label: 'Div', value: 'div' },
+						]}
+						onChange={(value) => {
+							setAttributes({ titleTag: value });
+						}}
+						value={titleTag}
 					/>
 					<CardDivider />
 					<ResRangleControl
@@ -205,7 +259,6 @@ const Inspector = ({ attributes, setAttributes }) => {
 						colorName="durationColor"
 						onChange={setAttributes}
 					/>
-					<CardDivider />
 				</PanelBody>
 				<PanelBody
 					title={__('Features', 'bdt-pricing-plan')}
@@ -241,34 +294,35 @@ const Inspector = ({ attributes, setAttributes }) => {
 									{__('Feature Items', 'bdt-pricing-plan')}
 								</p>
 								<div>
-									{textValues.map((value, index) => (
-										<div
-											key={index}
-											className="bdt-feature-wrap"
-										>
-											<TextControl
-												value={value}
-												onChange={(newValue) =>
-													onChangeText(
-														newValue,
-														index
-													)
-												}
-												label={`Field ${index + 1}`}
-											/>
-											<button
-												onClick={() =>
-													removeTextField(index)
-												}
-												className="bdt-feature-remove"
+									{textValues &&
+										textValues.map((value, index) => (
+											<div
+												key={index}
+												className="bdt-feature-wrap"
 											>
-												{__(
-													'Remove',
-													'bdt-pricing-plan'
-												)}
-											</button>
-										</div>
-									))}
+												<TextControl
+													value={value}
+													onChange={(newValue) =>
+														onChangeText(
+															newValue,
+															index
+														)
+													}
+													label={`Field ${index + 1}`}
+												/>
+												<button
+													onClick={() =>
+														removeTextField(index)
+													}
+													className="bdt-feature-remove"
+												>
+													{__(
+														'Remove',
+														'bdt-pricing-plan'
+													)}
+												</button>
+											</div>
+										))}
 									<button
 										onClick={addTextField}
 										className="bdt-feature-add"
@@ -458,8 +512,22 @@ const Inspector = ({ attributes, setAttributes }) => {
 								max={100}
 							/>
 							<ResRangleControl
-								label={__('Padding', 'bdt-pricing-plan')}
-								controlName={BADGE_PADDING}
+								label={__(
+									'Horizontal Padding',
+									'bdt-pricing-plan'
+								)}
+								controlName={BADGE_HORIZONTAL_PADDING}
+								objAttrs={objAttrs}
+								noUnits={false}
+								min={0}
+								max={100}
+							/>
+							<ResRangleControl
+								label={__(
+									'Vertical Padding',
+									'bdt-pricing-plan'
+								)}
+								controlName={BADGE_VERTICAL_PADDING}
 								objAttrs={objAttrs}
 								noUnits={false}
 								min={0}
@@ -478,6 +546,54 @@ const Inspector = ({ attributes, setAttributes }) => {
 							setAttributes({ buttonText: value })
 						}
 						value={buttonText}
+					/>
+					<ResRangleControl
+						label={__('Font Size', 'bdt-pricing-plan')}
+						controlName={BUTTON_FONT_SIZE}
+						objAttrs={objAttrs}
+						noUnits={false}
+						min={0}
+						max={100}
+					/>
+					<ColorControl
+						label={__('Color', 'bdt-pricing-plan')}
+						color={buttonColor}
+						colorName="buttonColor"
+						onChange={setAttributes}
+					/>
+					<ColorControl
+						label={__('Background Color', 'bdt-pricing-plan')}
+						color={buttonBgColor}
+						colorName="buttonBgColor"
+						onChange={setAttributes}
+					/>
+					<ColorControl
+						label={__('Hover Color', 'bdt-pricing-plan')}
+						color={buttonHoverColor}
+						colorName="buttonHoverColor"
+						onChange={setAttributes}
+					/>
+					<ColorControl
+						label={__('Hover Background Color', 'bdt-pricing-plan')}
+						color={buttonHoverBgColor}
+						colorName="buttonHoverBgColor"
+						onChange={setAttributes}
+					/>
+					<ResRangleControl
+						label={__('Border Radius', 'bdt-pricing-plan')}
+						controlName={BUTTON_BORDER_RADIUS}
+						objAttrs={objAttrs}
+						noUnits={false}
+						min={0}
+						max={100}
+					/>
+					<ResRangleControl
+						label={__('Padding', 'bdt-pricing-plan')}
+						controlName={BUTTON_PADDING}
+						objAttrs={objAttrs}
+						noUnits={false}
+						min={0}
+						max={100}
 					/>
 					<TextControl
 						label={__('Button Link', 'bdt-pricing-plan')}
