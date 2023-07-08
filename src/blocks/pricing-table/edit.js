@@ -111,12 +111,12 @@ export default function Edit({ attributes, setAttributes, clientId }) {
 	const tabUserFont = attributes[`${USERCOUNT_FONT_SIZE}TabRange`];
 	const mobUserFont = attributes[`${USERCOUNT_FONT_SIZE}MobRange`];
 	const userFontUnit = attributes[`${USERCOUNT_FONT_SIZE}Unit`];
-	// Icon Size
+	// Duration Font Size
 	const deskDurationSize = attributes[`${DURATION_FONT_SIZE}DeskRange`];
 	const tabDurationSize = attributes[`${DURATION_FONT_SIZE}TabRange`];
 	const mobDurationSize = attributes[`${DURATION_FONT_SIZE}MobRange`];
 	const durationSizeUnit = attributes[`${DURATION_FONT_SIZE}Unit`];
-	// Icon Round Size
+	// Feature Title Font Size
 	const deskFeatureTitleSize =
 		attributes[`${FEATURE_TITLE_FONT_SIZE}DeskRange`];
 	const tabFeatureTitleSize =
@@ -124,7 +124,7 @@ export default function Edit({ attributes, setAttributes, clientId }) {
 	const mobFeatureTitleSize =
 		attributes[`${FEATURE_TITLE_FONT_SIZE}MobRange`];
 	const featureTitleSizeUnit = attributes[`${FEATURE_TITLE_FONT_SIZE}Unit`];
-	// Icon Gap
+	// Feature Sub Title Font Size
 	const deskFeatureSubTitleSize =
 		attributes[`${FEATURE_SUB_TITLE_FONT_SIZE}DeskRange`];
 	const tabFeatureSubTitleSize =
@@ -133,12 +133,12 @@ export default function Edit({ attributes, setAttributes, clientId }) {
 		attributes[`${FEATURE_SUB_TITLE_FONT_SIZE}MobRange`];
 	const featureSubTitleSizeUnit =
 		attributes[`${FEATURE_SUB_TITLE_FONT_SIZE}Unit`];
-	// Icon Gap
+	// Feature Icon Size
 	const deskFeatureIconSize = attributes[`${FEATURE_ICON_SIZE}DeskRange`];
 	const tabFeatureIconSize = attributes[`${FEATURE_ICON_SIZE}TabRange`];
 	const mobFeatureIconSize = attributes[`${FEATURE_ICON_SIZE}MobRange`];
 	const featureIconSizeUnit = attributes[`${FEATURE_ICON_SIZE}Unit`];
-	// Icon Gap
+	// Feature Icon Round Size
 	const deskFeatureIconRoundSize =
 		attributes[`${FEATURE_ICON_ROUND_SIZE}DeskRange`];
 	const tabFeatureIconRoundSize =
@@ -147,7 +147,7 @@ export default function Edit({ attributes, setAttributes, clientId }) {
 		attributes[`${FEATURE_ICON_ROUND_SIZE}MobRange`];
 	const featureIconRoundSizeUnit =
 		attributes[`${FEATURE_ICON_ROUND_SIZE}Unit`];
-	// Icon Gap
+	// Feature Text Font Size
 	const deskFeatureItemSize =
 		attributes[`${FEATURE_ITEM_TEXT_FONT_SIZE}DeskRange`];
 	const tabFeatureItemSize =
@@ -156,12 +156,12 @@ export default function Edit({ attributes, setAttributes, clientId }) {
 		attributes[`${FEATURE_ITEM_TEXT_FONT_SIZE}MobRange`];
 	const featureItemSizeUnit =
 		attributes[`${FEATURE_ITEM_TEXT_FONT_SIZE}Unit`];
-	// Icon Gap
+	// Feature Item Text Gap
 	const deskFeatureItemGap = attributes[`${FEATURE_ITEM_TEXT_GAP}DeskRange`];
 	const tabFeatureItemGap = attributes[`${FEATURE_ITEM_TEXT_GAP}TabRange`];
 	const mobFeatureItemGap = attributes[`${FEATURE_ITEM_TEXT_GAP}MobRange`];
 	const featureItemGapUnit = attributes[`${FEATURE_ITEM_TEXT_GAP}Unit`];
-	// Icon Gap
+	// Feature Item Bottom Gap
 	const deskFeatureItemBottomGap =
 		attributes[`${FEATURE_ITEM_BOTTOM_GAP}DeskRange`];
 	const tabFeatureItemBottomGap =
@@ -170,33 +170,33 @@ export default function Edit({ attributes, setAttributes, clientId }) {
 		attributes[`${FEATURE_ITEM_BOTTOM_GAP}MobRange`];
 	const featureItemBottomGapUnit =
 		attributes[`${FEATURE_ITEM_BOTTOM_GAP}Unit`];
-	// Icon Gap
+	// Button Font Size
 	const deskButtonFontSize = attributes[`${BUTTON_FONT_SIZE}DeskRange`];
 	const tabButtonFontSize = attributes[`${BUTTON_FONT_SIZE}TabRange`];
 	const mobButtonFontSize = attributes[`${BUTTON_FONT_SIZE}MobRange`];
 	const buttonFontSizeUnit = attributes[`${BUTTON_FONT_SIZE}Unit`];
-	// Icon Gap
+	// Button Border Radius
 	const deskButtonBorderRadius =
 		attributes[`${BUTTON_BORDER_RADIUS}DeskRange`];
 	const tabButtonBorderRadius = attributes[`${BUTTON_BORDER_RADIUS}TabRange`];
 	const mobButtonBorderRadius = attributes[`${BUTTON_BORDER_RADIUS}MobRange`];
 	const buttonBorderRadiusUnit = attributes[`${BUTTON_BORDER_RADIUS}Unit`];
-	// Icon Gap
+	// Button Padding
 	const deskButtonPadding = attributes[`${BUTTON_PADDING}DeskRange`];
 	const tabButtonPadding = attributes[`${BUTTON_PADDING}TabRange`];
 	const mobButtonPadding = attributes[`${BUTTON_PADDING}MobRange`];
 	const buttonPaddingUnit = attributes[`${BUTTON_PADDING}Unit`];
-	// Icon Gap
+	// Badge Font Size
 	const deskBadgeFontSize = attributes[`${BADGE_FONT_SIZE}DeskRange`];
 	const tabBadgeFontSize = attributes[`${BADGE_FONT_SIZE}TabRange`];
 	const mobBadgeFontSize = attributes[`${BADGE_FONT_SIZE}MobRange`];
 	const badgeFontSizeUnit = attributes[`${BADGE_FONT_SIZE}Unit`];
-	// Icon Gap
+	// Badge Border Radius
 	const deskBadgeBorderRadius = attributes[`${BADGE_BORDER_RADIUS}DeskRange`];
 	const tabBadgeBorderRadius = attributes[`${BADGE_BORDER_RADIUS}TabRange`];
 	const mobBadgeBorderRadius = attributes[`${BADGE_BORDER_RADIUS}MobRange`];
 	const badgeBorderRadiusUnit = attributes[`${BADGE_BORDER_RADIUS}Unit`];
-	// Icon Gap
+	// Badge Horizontal Padding
 	const deskBadgeHorizontalPadding =
 		attributes[`${BADGE_HORIZONTAL_PADDING}DeskRange`];
 	const tabBadgeHorizontalPadding =
@@ -205,7 +205,7 @@ export default function Edit({ attributes, setAttributes, clientId }) {
 		attributes[`${BADGE_HORIZONTAL_PADDING}MobRange`];
 	const badgeHorizontalPaddingUnit =
 		attributes[`${BADGE_HORIZONTAL_PADDING}Unit`];
-	// Icon Gap
+	// Badge Vertical Padding
 	const deskBadgeVerticalPadding =
 		attributes[`${BADGE_VERTICAL_PADDING}DeskRange`];
 	const tabBadgeVerticalPadding =
@@ -553,6 +553,119 @@ export default function Edit({ attributes, setAttributes, clientId }) {
 			}`
 				: ' '
 		}
+		${
+			tabDurationSize !== undefined && tabDurationSize !== ''
+				? `.${uniqueId} .bdt-container .bdt-item .bdt-head-content .bdt-price-info .bdt-user-month .bdt-time-text {
+				font-size: ${tabDurationSize}${durationSizeUnit};
+			}`
+				: ' '
+		}
+		${
+			tabFeatureTitleSize !== undefined && tabFeatureTitleSize !== ''
+				? `.${uniqueId} .bdt-container .bdt-item .bdt-features-info .bdt-features-title {
+				font-size: ${tabFeatureTitleSize}${featureTitleSizeUnit};
+			}`
+				: ' '
+		}
+		${
+			tabFeatureSubTitleSize !== undefined &&
+			tabFeatureSubTitleSize !== ''
+				? `.${uniqueId} .bdt-container .bdt-item .bdt-features-info .bdt-features-desc {
+				font-size: ${tabFeatureSubTitleSize}${featureSubTitleSizeUnit};
+			}`
+				: ' '
+		}
+		${
+			tabFeatureIconSize !== undefined && tabFeatureIconSize !== ''
+				? `.${uniqueId} .bdt-container .bdt-item .bdt-features-info .features .bdt-check-icon {
+				font-size: ${tabFeatureIconSize}${featureIconSizeUnit};
+			}`
+				: ' '
+		}
+		${
+			tabFeatureIconRoundSize !== undefined &&
+			tabFeatureIconRoundSize !== ''
+				? `.${uniqueId} .bdt-container .bdt-item .bdt-features-info .features .bdt-check-icon {
+				width: ${tabFeatureIconRoundSize}${featureIconRoundSizeUnit};
+				height: ${tabFeatureIconRoundSize}${featureIconRoundSizeUnit};
+			}`
+				: ' '
+		}
+		${
+			tabFeatureItemSize !== undefined && tabFeatureItemSize !== ''
+				? `.${uniqueId} .bdt-container .bdt-item .bdt-features-info .features .bdt-feature-item {
+				font-size: ${tabFeatureItemSize}${featureItemSizeUnit};
+			}`
+				: ' '
+		}
+		${
+			tabFeatureItemGap !== undefined && tabFeatureItemGap !== ''
+				? `.${uniqueId} .bdt-container .bdt-item .bdt-features-info .features li {
+				column-gap: ${tabFeatureItemGap}${featureItemGapUnit};
+			}`
+				: ' '
+		}
+		${
+			tabFeatureItemBottomGap !== undefined &&
+			tabFeatureItemBottomGap !== ''
+				? `.${uniqueId} .bdt-container .bdt-item .bdt-features-info .features {
+				row-gap: ${tabFeatureItemBottomGap}${featureItemBottomGapUnit};
+			}`
+				: ' '
+		}
+		${
+			tabButtonFontSize !== undefined && tabButtonFontSize !== ''
+				? `.${uniqueId} .bdt-container .bdt-item .bdt-head-content .bdt-link-btn a {
+				font-size: ${tabButtonFontSize}${buttonFontSizeUnit};
+			}`
+				: ' '
+		}
+		${
+			tabButtonBorderRadius !== undefined && tabButtonBorderRadius !== ''
+				? `.${uniqueId} .bdt-container .bdt-item .bdt-head-content .bdt-link-btn a {
+				border-radius: ${tabButtonBorderRadius}${buttonBorderRadiusUnit};
+			}`
+				: ' '
+		}
+		${
+			tabButtonPadding !== undefined && tabButtonPadding !== ''
+				? `.${uniqueId} .bdt-container .bdt-item .bdt-head-content .bdt-link-btn a {
+				padding: ${tabButtonPadding}${buttonPaddingUnit};
+			}`
+				: ' '
+		}
+		${
+			tabBadgeFontSize !== undefined && tabBadgeFontSize !== ''
+				? `.${uniqueId} .bdt-container .bdt-item .bdt-head-content .bdt-popular-btn {
+				font-size: ${tabBadgeFontSize}${badgeFontSizeUnit};
+			}`
+				: ' '
+		}
+		${
+			tabBadgeBorderRadius !== undefined && tabBadgeBorderRadius !== ''
+				? `.${uniqueId} .bdt-container .bdt-item .bdt-head-content .bdt-popular-btn {
+				border-radius: ${tabBadgeBorderRadius}${badgeBorderRadiusUnit};
+			}`
+				: ' '
+		}
+		${
+			tabBadgeHorizontalPadding !== undefined &&
+			tabBadgeHorizontalPadding !== ''
+				? `.${uniqueId} .bdt-container .bdt-item .bdt-head-content .bdt-popular-btn {
+				padding-left: ${tabBadgeHorizontalPadding}${badgeHorizontalPaddingUnit};
+				padding-right: ${tabBadgeHorizontalPadding}${badgeHorizontalPaddingUnit};
+			}`
+				: ' '
+		}
+		${
+			tabBadgeVerticalPadding !== undefined &&
+			tabBadgeVerticalPadding !== ''
+				? `.${uniqueId} .bdt-container .bdt-item .bdt-head-content .bdt-popular-btn {
+				padding-top: ${tabBadgeVerticalPadding}${badgeVerticalPaddingUnit};
+				padding-bottom: ${tabBadgeVerticalPadding}${badgeVerticalPaddingUnit};
+			}`
+				: ' '
+		}
 	`;
 	const mobStyles = `
 		${
@@ -581,6 +694,119 @@ export default function Edit({ attributes, setAttributes, clientId }) {
 			mobUserFont !== undefined && mobUserFont !== ''
 				? `.${uniqueId} .bdt-container .bdt-item .bdt-head-content .bdt-price-info .bdt-user-month .bdt-user-text {
 				font-size: ${mobUserFont}${userFontUnit};
+			}`
+				: ' '
+		}
+		${
+			mobDurationSize !== undefined && mobDurationSize !== ''
+				? `.${uniqueId} .bdt-container .bdt-item .bdt-head-content .bdt-price-info .bdt-user-month .bdt-time-text {
+				font-size: ${mobDurationSize}${durationSizeUnit};
+			}`
+				: ' '
+		}
+		${
+			mobFeatureTitleSize !== undefined && mobFeatureTitleSize !== ''
+				? `.${uniqueId} .bdt-container .bdt-item .bdt-features-info .bdt-features-title {
+				font-size: ${mobFeatureTitleSize}${featureTitleSizeUnit};
+			}`
+				: ' '
+		}
+		${
+			mobFeatureSubTitleSize !== undefined &&
+			mobFeatureSubTitleSize !== ''
+				? `.${uniqueId} .bdt-container .bdt-item .bdt-features-info .bdt-features-desc {
+				font-size: ${mobFeatureSubTitleSize}${featureSubTitleSizeUnit};
+			}`
+				: ' '
+		}
+		${
+			mobFeatureIconSize !== undefined && mobFeatureIconSize !== ''
+				? `.${uniqueId} .bdt-container .bdt-item .bdt-features-info .features .bdt-check-icon {
+				font-size: ${mobFeatureIconSize}${featureIconSizeUnit};
+			}`
+				: ' '
+		}
+		${
+			mobFeatureIconRoundSize !== undefined &&
+			mobFeatureIconRoundSize !== ''
+				? `.${uniqueId} .bdt-container .bdt-item .bdt-features-info .features .bdt-check-icon {
+				width: ${mobFeatureIconRoundSize}${featureIconRoundSizeUnit};
+				height: ${mobFeatureIconRoundSize}${featureIconRoundSizeUnit};
+			}`
+				: ' '
+		}
+		${
+			mobFeatureItemSize !== undefined && mobFeatureItemSize !== ''
+				? `.${uniqueId} .bdt-container .bdt-item .bdt-features-info .features .bdt-feature-item {
+				font-size: ${mobFeatureItemSize}${featureItemSizeUnit};
+			}`
+				: ' '
+		}
+		${
+			mobFeatureItemGap !== undefined && mobFeatureItemGap !== ''
+				? `.${uniqueId} .bdt-container .bdt-item .bdt-features-info .features li {
+				column-gap: ${mobFeatureItemGap}${featureItemGapUnit};
+			}`
+				: ' '
+		}
+		${
+			mobFeatureItemBottomGap !== undefined &&
+			mobFeatureItemBottomGap !== ''
+				? `.${uniqueId} .bdt-container .bdt-item .bdt-features-info .features {
+				row-gap: ${mobFeatureItemBottomGap}${featureItemBottomGapUnit};
+			}`
+				: ' '
+		}
+		${
+			mobButtonFontSize !== undefined && mobButtonFontSize !== ''
+				? `.${uniqueId} .bdt-container .bdt-item .bdt-head-content .bdt-link-btn a {
+				font-size: ${mobButtonFontSize}${buttonFontSizeUnit};
+			}`
+				: ' '
+		}
+		${
+			mobButtonBorderRadius !== undefined && mobButtonBorderRadius !== ''
+				? `.${uniqueId} .bdt-container .bdt-item .bdt-head-content .bdt-link-btn a {
+				border-radius: ${mobButtonBorderRadius}${buttonBorderRadiusUnit};
+			}`
+				: ' '
+		}
+		${
+			mobButtonPadding !== undefined && mobButtonPadding !== ''
+				? `.${uniqueId} .bdt-container .bdt-item .bdt-head-content .bdt-link-btn a {
+				padding: ${mobButtonPadding}${buttonPaddingUnit};
+			}`
+				: ' '
+		}
+		${
+			mobBadgeFontSize !== undefined && mobBadgeFontSize !== ''
+				? `.${uniqueId} .bdt-container .bdt-item .bdt-head-content .bdt-popular-btn {
+				font-size: ${mobBadgeFontSize}${badgeFontSizeUnit};
+			}`
+				: ' '
+		}
+		${
+			mobBadgeBorderRadius !== undefined && mobBadgeBorderRadius !== ''
+				? `.${uniqueId} .bdt-container .bdt-item .bdt-head-content .bdt-popular-btn {
+				border-radius: ${mobBadgeBorderRadius}${badgeBorderRadiusUnit};
+			}`
+				: ' '
+		}
+		${
+			mobBadgeHorizontalPadding !== undefined &&
+			mobBadgeHorizontalPadding !== ''
+				? `.${uniqueId} .bdt-container .bdt-item .bdt-head-content .bdt-popular-btn {
+				padding-left: ${mobBadgeHorizontalPadding}${badgeHorizontalPaddingUnit};
+				padding-right: ${mobBadgeHorizontalPadding}${badgeHorizontalPaddingUnit};
+			}`
+				: ' '
+		}
+		${
+			mobBadgeVerticalPadding !== undefined &&
+			mobBadgeVerticalPadding !== ''
+				? `.${uniqueId} .bdt-container .bdt-item .bdt-head-content .bdt-popular-btn {
+				padding-top: ${mobBadgeVerticalPadding}${badgeVerticalPaddingUnit};
+				padding-bottom: ${mobBadgeVerticalPadding}${badgeVerticalPaddingUnit};
 			}`
 				: ' '
 		}
