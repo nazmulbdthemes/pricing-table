@@ -9,6 +9,7 @@ const {
 	PLAN_FONT_SIZE,
 	PRICE_FONT_SIZE,
 	USERCOUNT_FONT_SIZE,
+	DURATION_FONT_SIZE,
 	FEATURE_TITLE_FONT_SIZE,
 	FEATURE_SUB_TITLE_FONT_SIZE,
 	FEATURE_ICON_SIZE,
@@ -22,6 +23,7 @@ const {
 	BADGE_FONT_SIZE,
 	BADGE_HORIZONTAL_PADDING,
 	BADGE_VERTICAL_PADDING,
+	BADGE_BORDER_RADIUS,
 	ITEM_BORDER_RADIUS,
 	ITEM_PADDING,
 } = constants;
@@ -43,7 +45,7 @@ const attributes = {
 	},
 	price: {
 		type: 'string',
-		default: 20,
+		default: '$20',
 	},
 	userCount: {
 		type: 'string',
@@ -159,6 +161,14 @@ const attributes = {
 		},
 	}),
 	...generateResRangleControlAttributes({
+		controlName: DURATION_FONT_SIZE,
+		defaults: {
+			[`${DURATION_FONT_SIZE}DeskRange`]: 14,
+			[`${DURATION_FONT_SIZE}TabRange`]: 14,
+			[`${DURATION_FONT_SIZE}MobRange`]: 14,
+		},
+	}),
+	...generateResRangleControlAttributes({
 		controlName: FEATURE_TITLE_FONT_SIZE,
 		defaults: {
 			[`${FEATURE_TITLE_FONT_SIZE}DeskRange`]: 35,
@@ -260,6 +270,14 @@ const attributes = {
 			[`${BADGE_VERTICAL_PADDING}DeskRange`]: 4,
 			[`${BADGE_VERTICAL_PADDING}TabRange`]: 4,
 			[`${BADGE_VERTICAL_PADDING}MobRange`]: 4,
+		},
+	}),
+	...generateResRangleControlAttributes({
+		controlName: BADGE_BORDER_RADIUS,
+		defaults: {
+			[`${BADGE_BORDER_RADIUS}DeskRange`]: 30,
+			[`${BADGE_BORDER_RADIUS}TabRange`]: 30,
+			[`${BADGE_BORDER_RADIUS}MobRange`]: 30,
 		},
 	}),
 	...generateResRangleControlAttributes({

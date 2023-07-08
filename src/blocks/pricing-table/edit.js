@@ -16,8 +16,6 @@ import { softMinifyCssStrings } from '../../helper/softminify';
 import './style.scss';
 import * as Constants from './constants';
 const {
-	GRID_GAP,
-	ROW_GAP,
 	PLAN_FONT_SIZE,
 	PRICE_FONT_SIZE,
 	USERCOUNT_FONT_SIZE,
@@ -54,7 +52,6 @@ export default function Edit({ attributes, setAttributes, clientId }) {
 		priceColor,
 		userCountColor,
 		durationColor,
-		contentBgColor,
 		textAlign,
 		itemBgColor,
 		featureTitle,
@@ -77,7 +74,6 @@ export default function Edit({ attributes, setAttributes, clientId }) {
 		buttonHoverColor,
 		buttonHoverBgColor,
 	} = attributes;
-
 	// unique id
 	useEffect(() => {
 		setAttributes({
@@ -100,27 +96,17 @@ export default function Edit({ attributes, setAttributes, clientId }) {
 		return cssResult;
 	};
 
-	// Grid Coloumn Gap
-	const deskGap = attributes[`${GRID_GAP}DeskRange`];
-	const tabGap = attributes[`${GRID_GAP}TabRange`];
-	const mobGap = attributes[`${GRID_GAP}MobRange`];
-	const gapUnit = attributes[`${GRID_GAP}Unit`];
-	// Grid Row Gap
-	const deskRowGap = attributes[`${ROW_GAP}DeskRange`];
-	const tabRowGap = attributes[`${ROW_GAP}TabRange`];
-	const mobRowGap = attributes[`${ROW_GAP}MobRange`];
-	const gapRowUnit = attributes[`${ROW_GAP}Unit`];
-	// Name Font Size
+	// Plan Font Size
 	const deskPricePlanFont = attributes[`${PLAN_FONT_SIZE}DeskRange`];
 	const tabPricePlanFont = attributes[`${PLAN_FONT_SIZE}TabRange`];
 	const mobPricePlanFont = attributes[`${PLAN_FONT_SIZE}MobRange`];
 	const pricePlanUnit = attributes[`${PLAN_FONT_SIZE}Unit`];
-	// Name Font Size
+	// Price Font Size
 	const deskPriceFont = attributes[`${PRICE_FONT_SIZE}DeskRange`];
 	const tabPriceFont = attributes[`${PRICE_FONT_SIZE}TabRange`];
 	const mobPriceFont = attributes[`${PRICE_FONT_SIZE}MobRange`];
 	const priceFontUnit = attributes[`${PRICE_FONT_SIZE}Unit`];
-	// DESG Font Size
+	// User Count Font Size
 	const deskUserFont = attributes[`${USERCOUNT_FONT_SIZE}DeskRange`];
 	const tabUserFont = attributes[`${USERCOUNT_FONT_SIZE}TabRange`];
 	const mobUserFont = attributes[`${USERCOUNT_FONT_SIZE}MobRange`];
@@ -340,7 +326,7 @@ export default function Edit({ attributes, setAttributes, clientId }) {
 		}
 		${
 			durationColor !== undefined && durationColor !== ''
-				? `.${uniqueId} .bdt-container .bdt-item .bdt-head-content .bdt-price-info .bdt-user-month .bdt-user-text {
+				? `.${uniqueId} .bdt-container .bdt-item .bdt-head-content .bdt-price-info .bdt-user-month .bdt-time-text {
 				color: ${durationColor};
 			}`
 				: ' '
@@ -560,6 +546,13 @@ export default function Edit({ attributes, setAttributes, clientId }) {
 			}`
 				: ' '
 		}
+		${
+			tabUserFont !== undefined && tabUserFont !== ''
+				? `.${uniqueId} .bdt-container .bdt-item .bdt-head-content .bdt-price-info .bdt-user-month .bdt-user-text {
+				font-size: ${tabUserFont}${userFontUnit};
+			}`
+				: ' '
+		}
 	`;
 	const mobStyles = `
 		${
@@ -581,6 +574,13 @@ export default function Edit({ attributes, setAttributes, clientId }) {
 			mobPriceFont !== undefined && mobPriceFont !== ''
 				? `.${uniqueId} .bdt-container .bdt-item .bdt-head-content .bdt-price-info .bdt-price {
 				font-size: ${mobPriceFont}${priceFontUnit};
+			}`
+				: ' '
+		}
+		${
+			mobUserFont !== undefined && mobUserFont !== ''
+				? `.${uniqueId} .bdt-container .bdt-item .bdt-head-content .bdt-price-info .bdt-user-month .bdt-user-text {
+				font-size: ${mobUserFont}${userFontUnit};
 			}`
 				: ' '
 		}
@@ -637,7 +637,7 @@ export default function Edit({ attributes, setAttributes, clientId }) {
 								</div>
 							)}
 							<div className="bdt-price-info">
-								<div className="bdt-price">${price}</div>
+								<div className="bdt-price">{price}</div>
 								<div className="bdt-user-month">
 									<span className="bdt-user-text">
 										{userCount}

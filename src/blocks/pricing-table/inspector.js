@@ -19,8 +19,8 @@ import * as Constants from './constants';
 import * as Controls from '../../controls';
 
 import './editor.scss';
-import aligns from '../../options/align';
-const { ResRangleControl, ColorControl, Alignment } = Controls;
+
+const { ResRangleControl, ColorControl } = Controls;
 const {
 	PLAN_FONT_SIZE,
 	PRICE_FONT_SIZE,
@@ -308,7 +308,9 @@ const Inspector = ({ attributes, setAttributes }) => {
 															index
 														)
 													}
-													label={`Field ${index + 1}`}
+													label={`Feature ${
+														index + 1
+													}`}
 												/>
 												<button
 													onClick={() =>
