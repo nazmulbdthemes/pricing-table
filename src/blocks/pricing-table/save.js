@@ -6,6 +6,7 @@ import { useBlockProps, RichText } from '@wordpress/block-editor';
 export default function save({ attributes }) {
 	const {
 		uniqueId,
+		style,
 		pricingPlan,
 		titleTag,
 		showBadge,
@@ -23,7 +24,7 @@ export default function save({ attributes }) {
 	return (
 		<div
 			{...useBlockProps.save({
-				className: `${uniqueId}`,
+				className: `${uniqueId} ${style}`,
 			})}
 		>
 			<div className="bdt-container">
@@ -38,7 +39,7 @@ export default function save({ attributes }) {
 							<div className="bdt-popular-btn">{badgeText}</div>
 						)}
 						<div className="bdt-price-info">
-							<div className="bdt-price">${price}</div>
+							<div className="bdt-price">{price}</div>
 							<div className="bdt-user-month">
 								<span className="bdt-user-text">
 									{userCount}
@@ -68,19 +69,20 @@ export default function save({ attributes }) {
 						</div>
 
 						<ul className="features">
-							{textValues.map((value, index) => (
-								<li key={index}>
-									<>
-										<span
-											key={index}
-											className="bdt-check-icon"
-										>
-											&#10003;
-										</span>
-										<span key={index}>{value}</span>
-									</>
-								</li>
-							))}
+							{textValues &&
+								textValues.map((value, index) => (
+									<li key={index}>
+										<>
+											<span
+												key={index}
+												className="bdt-check-icon"
+											>
+												&#10003;
+											</span>
+											<span key={index}>{value}</span>
+										</>
+									</li>
+								))}
 						</ul>
 					</div>
 				</div>

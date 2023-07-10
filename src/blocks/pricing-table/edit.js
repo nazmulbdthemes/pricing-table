@@ -42,6 +42,7 @@ const {
 export default function Edit({ attributes, setAttributes, clientId }) {
 	const {
 		uniqueId,
+		style,
 		blockStyle,
 		pricingPlan,
 		price,
@@ -837,7 +838,7 @@ export default function Edit({ attributes, setAttributes, clientId }) {
 			<Inspector attributes={attributes} setAttributes={setAttributes} />
 			<div
 				{...useBlockProps({
-					className: uniqueId,
+					className: `${uniqueId} ${style}`,
 				})}
 			>
 				<div className="bdt-container">
@@ -897,24 +898,25 @@ export default function Edit({ attributes, setAttributes, clientId }) {
 							</div>
 
 							<ul className="features">
-								{textValues.map((value, index) => (
-									<li key={index}>
-										<>
-											<span
-												key={index}
-												className="bdt-check-icon"
-											>
-												&#10003;
-											</span>
-											<span
-												key={index}
-												className="bdt-feature-item"
-											>
-												{value}
-											</span>
-										</>
-									</li>
-								))}
+								{textValues &&
+									textValues.map((value, index) => (
+										<li key={index}>
+											<>
+												<span
+													key={index}
+													className="bdt-check-icon"
+												>
+													&#10003;
+												</span>
+												<span
+													key={index}
+													className="bdt-feature-item"
+												>
+													{value}
+												</span>
+											</>
+										</li>
+									))}
 							</ul>
 						</div>
 					</div>

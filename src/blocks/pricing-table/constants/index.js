@@ -1,4 +1,3 @@
-export const GRID_GAP = 'gridGap';
 export const PLAN_FONT_SIZE = 'planFontSize';
 export const PRICE_FONT_SIZE = 'priceFontSize';
 export const USERCOUNT_FONT_SIZE = 'userCountFontSize';

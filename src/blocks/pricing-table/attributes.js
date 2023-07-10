@@ -4,8 +4,6 @@ import * as generators from '../../generators';
 const { generateResRangleControlAttributes } = generators;
 
 const {
-	GRID_GAP,
-	ROW_GAP,
 	PLAN_FONT_SIZE,
 	PRICE_FONT_SIZE,
 	USERCOUNT_FONT_SIZE,
@@ -120,22 +118,6 @@ const attributes = {
 		type: 'array',
 		default: ['One account', 'Unlimited songs', 'Customized playlist'],
 	},
-	...generateResRangleControlAttributes({
-		controlName: GRID_GAP,
-		defaults: {
-			[`${GRID_GAP}DeskRange`]: 30,
-			[`${GRID_GAP}TabRange`]: 30,
-			[`${GRID_GAP}MobRange`]: 30,
-		},
-	}),
-	...generateResRangleControlAttributes({
-		controlName: ROW_GAP,
-		defaults: {
-			[`${ROW_GAP}DeskRange`]: 40,
-			[`${ROW_GAP}TabRange`]: 40,
-			[`${ROW_GAP}MobRange`]: 40,
-		},
-	}),
 	...generateResRangleControlAttributes({
 		controlName: PLAN_FONT_SIZE,
 		defaults: {
