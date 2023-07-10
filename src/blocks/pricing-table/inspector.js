@@ -61,7 +61,7 @@ const Inspector = ({ attributes, setAttributes }) => {
 		durationColor,
 		featureTitle,
 		featureSubTitle,
-		textValues,
+		featureContents,
 		buttonText,
 		buttonLink,
 		newTab,
@@ -83,22 +83,22 @@ const Inspector = ({ attributes, setAttributes }) => {
 	const objAttrs = { attributes, setAttributes, objAttributes };
 
 	const onChangeText = (newValue, index) => {
-		const updatedValues = [...textValues];
+		const updatedValues = [...featureContents];
 		updatedValues[index] = newValue;
-		setAttributes({ textValues: updatedValues });
+		setAttributes({ featureContents: updatedValues });
 	};
 
 	// Function to add a new text field
 	const addTextField = () => {
-		const updatedValues = [...textValues, ''];
-		setAttributes({ textValues: updatedValues });
+		const updatedValues = [...featureContents, ''];
+		setAttributes({ featureContents: updatedValues });
 	};
 
 	// Function to remove a text field
 	const removeTextField = (index) => {
-		const updatedValues = [...textValues];
+		const updatedValues = [...featureContents];
 		updatedValues.splice(index, 1);
-		setAttributes({ textValues: updatedValues });
+		setAttributes({ featureContents: updatedValues });
 	};
 	return (
 		<InspectorControls>
@@ -294,8 +294,8 @@ const Inspector = ({ attributes, setAttributes }) => {
 									{__('Feature Items', 'bdt-pricing-plan')}
 								</p>
 								<div>
-									{textValues &&
-										textValues.map((value, index) => (
+									{featureContents &&
+										featureContents.map((value, index) => (
 											<div
 												key={index}
 												className="bdt-feature-wrap"

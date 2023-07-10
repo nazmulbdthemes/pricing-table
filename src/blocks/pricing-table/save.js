@@ -2,6 +2,7 @@
  * WordPress dependencies
  */
 import { useBlockProps, RichText } from '@wordpress/block-editor';
+import { Dashicon } from '@wordpress/components';
 
 export default function save({ attributes }) {
 	const {
@@ -19,7 +20,7 @@ export default function save({ attributes }) {
 		newTab,
 		featureTitle,
 		featureSubTitle,
-		textValues,
+		featureContents,
 	} = attributes;
 	return (
 		<div
@@ -36,7 +37,11 @@ export default function save({ attributes }) {
 							value={pricingPlan}
 						/>
 						{showBadge && (
-							<div className="bdt-popular-btn">{badgeText}</div>
+							<RichText.Content
+								tagName="div"
+								className="bdt-popular-btn"
+								value={badgeText}
+							/>
 						)}
 						<div className="bdt-price-info">
 							<div className="bdt-price">{price}</div>
@@ -50,36 +55,41 @@ export default function save({ attributes }) {
 							</div>
 						</div>
 						<div className="bdt-link-btn">
-							<a
+							<RichText.Content
+								tagName="a"
 								className="bdt-buy-btn"
 								href={buttonLink}
 								target={newTab && '_blank'}
 								rel={
 									newTab ? 'noopener noreferrer' : 'noopener'
 								}
-							>
-								{buttonText}
-							</a>
+								value={buttonText}
+							/>
 						</div>
 					</div>
 					<div className="bdt-features-info">
-						<div className="bdt-features-title">{featureTitle}</div>
-						<div className="bdt-features-desc">
-							{featureSubTitle}
-						</div>
-
+						<RichText.Content
+							tagName="div"
+							className="bdt-features-title"
+							value={featureTitle}
+						/>
+						<RichText.Content
+							tagName="div"
+							className="bdt-features-desc"
+							value={featureSubTitle}
+						/>
 						<ul className="features">
-							{textValues &&
-								textValues.map((value, index) => (
+							{featureContents &&
+								featureContents.map((content, index) => (
 									<li key={index}>
 										<>
 											<span
 												key={index}
 												className="bdt-check-icon"
 											>
-												&#10003;
+												<Dashicon icon="yes" />
 											</span>
-											<span key={index}>{value}</span>
+											<span key={index}>{content}</span>
 										</>
 									</li>
 								))}

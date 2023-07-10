@@ -114,7 +114,7 @@ const attributes = {
 		type: 'string',
 		default: '',
 	},
-	textValues: {
+	featureContents: {
 		type: 'array',
 		default: ['One account', 'Unlimited songs', 'Customized playlist'],
 	},

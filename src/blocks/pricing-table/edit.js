@@ -3,6 +3,7 @@
  */
 import { __ } from '@wordpress/i18n';
 import { useBlockProps, RichText } from '@wordpress/block-editor';
+import { Dashicon } from '@wordpress/components';
 const { Fragment, useEffect } = wp.element;
 
 // editor style
@@ -57,7 +58,7 @@ export default function Edit({ attributes, setAttributes, clientId }) {
 		itemBgColor,
 		featureTitle,
 		featureSubTitle,
-		textValues,
+		featureContents,
 		buttonText,
 		buttonLink,
 		newTab,
@@ -859,9 +860,20 @@ export default function Edit({ attributes, setAttributes, clientId }) {
 								)}
 							/>
 							{showBadge && (
-								<div className="bdt-popular-btn">
-									{badgeText}
-								</div>
+								<RichText
+									tagName="div"
+									className="bdt-popular-btn"
+									value={badgeText}
+									onChange={(value) =>
+										setAttributes({
+											badgeText: value,
+										})
+									}
+									placeholder={__(
+										'Badge…',
+										'bdt-pricing-table'
+									)}
+								/>
 							)}
 							<div className="bdt-price-info">
 								<div className="bdt-price">{price}</div>
@@ -875,7 +887,8 @@ export default function Edit({ attributes, setAttributes, clientId }) {
 								</div>
 							</div>
 							<div className="bdt-link-btn">
-								<a
+								<RichText
+									tagName="a"
 									className="bdt-buy-btn"
 									href={buttonLink}
 									target={newTab && '_blank'}
@@ -884,35 +897,65 @@ export default function Edit({ attributes, setAttributes, clientId }) {
 											? 'noopener noreferrer'
 											: 'noopener'
 									}
-								>
-									{buttonText}
-								</a>
+									value={buttonText}
+									onChange={(value) =>
+										setAttributes({
+											buttonText: value,
+										})
+									}
+									placeholder={__(
+										'Write button text…',
+										'bdt-pricing-table'
+									)}
+								/>
 							</div>
 						</div>
 						<div className="bdt-features-info">
-							<div className="bdt-features-title">
-								{featureTitle}
-							</div>
-							<div className="bdt-features-desc">
-								{featureSubTitle}
-							</div>
-
+							<RichText
+								tagName="div"
+								className="bdt-features-title"
+								value={featureTitle}
+								onChange={(value) =>
+									setAttributes({
+										featureTitle: value,
+									})
+								}
+								placeholder={__(
+									'Feature title here…',
+									'bdt-pricing-table'
+								)}
+							/>
+							<RichText
+								tagName="div"
+								className="bdt-features-desc"
+								value={featureSubTitle}
+								onChange={(value) =>
+									setAttributes({
+										featureSubTitle: value,
+									})
+								}
+								placeholder={__(
+									'Feature sub title here…',
+									'bdt-pricing-table'
+								)}
+							/>
 							<ul className="features">
-								{textValues &&
-									textValues.map((value, index) => (
+								{featureContents &&
+									featureContents.map((content, index) => (
 										<li key={index}>
 											<>
 												<span
 													key={index}
 													className="bdt-check-icon"
 												>
-													&#10003;
+													<Dashicon icon="yes" />
 												</span>
+
 												<span
 													key={index}
 													className="bdt-feature-item"
 												>
-													{value}
+													{content}
 												</span>
 											</>
 										</li>
