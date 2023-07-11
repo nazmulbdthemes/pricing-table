@@ -54,7 +54,6 @@ export default function Edit({ attributes, setAttributes, clientId }) {
 		priceColor,
 		userCountColor,
 		durationColor,
-		textAlign,
 		itemBgColor,
 		featureTitle,
 		featureSubTitle,
@@ -269,13 +268,6 @@ export default function Edit({ attributes, setAttributes, clientId }) {
 						itemDeskStyles
 				  )}}`
 				: ' '
-		}
-		
-		.${uniqueId} .bdt-image-wrap,
-		.${uniqueId} .bdt-info-wrap,
-		.${uniqueId} .wp-block-bdt-team-member-item .bdt-hover-content .bdt-social-share{
-			text-align: ${textAlign};
-			justify-content: ${textAlign};
 		}
 		${
 			deskPricePlanFont !== undefined && deskPricePlanFont !== ''
@@ -535,9 +527,8 @@ export default function Edit({ attributes, setAttributes, clientId }) {
 		}
 		${
 			tabPricePlanFont !== undefined && tabPricePlanFont !== ''
-				? `.${uniqueId} .wp-block-bdt-team-member-item .bdt-info-wrap .bdt-name,
-				   .${uniqueId} .wp-block-bdt-team-member-item .bdt-image-wrap .bdt-hover-content .bdt-name {
-					font-size: ${tabPricePlanFont}${pricePlanUnit};
+				? `.${uniqueId} .bdt-container .bdt-item .bdt-head-content .bdt-package-title {
+					font-size: $ tabPricePlanFont}${pricePlanUnit};
 				}`
 				: ' '
 		}
@@ -679,8 +670,7 @@ export default function Edit({ attributes, setAttributes, clientId }) {
 		}
 		${
 			mobPricePlanFont !== undefined && mobPricePlanFont !== ''
-				? `.${uniqueId} .wp-block-bdt-team-member-item .bdt-info-wrap .bdt-name,
-				   .${uniqueId} .wp-block-bdt-team-member-item .bdt-image-wrap .bdt-hover-content .bdt-name {
+				? `.${uniqueId} .bdt-container .bdt-item .bdt-head-content .bdt-package-title {
 					font-size: ${mobPricePlanFont}${pricePlanUnit};
 				}`
 				: ' '
